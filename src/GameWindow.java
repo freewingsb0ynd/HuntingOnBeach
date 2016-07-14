@@ -64,20 +64,16 @@ public class GameWindow extends Frame implements  Runnable{
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == 1) {
-                    player.shot();
-                    enemy1.checkIfHit(e.getX(), e.getY());
-                    enemy2.checkIfHit(e.getX(), e.getY());
-                    enemy3.checkIfHit(e.getX(), e.getY());
-                    enemy4.checkIfHit(e.getX(), e.getY());
-                }
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == 1) {
                     mousepressedtime++;
+
                 }
+
             }
 
             @Override
@@ -101,13 +97,16 @@ public class GameWindow extends Frame implements  Runnable{
 
     }
 
-
-
-
-
-
     void gameUpdate(){
-        player.update();
+        if (mousepressedtime>0) {
+            pressingornot=1;
+        }
+        if (pressingornot==1) player.shot();
+        enemy1.checkIfHit(player.posX, player.posY);
+        enemy2.checkIfHit(player.posX, player.posY);
+        enemy3.checkIfHit(player.posX, player.posY);
+        enemy4.checkIfHit(player.posX, player.posY);
+
         enemy1.update();
         enemy2.update();
         enemy3.update();
