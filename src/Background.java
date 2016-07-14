@@ -28,6 +28,8 @@ public class Background {
             e.printStackTrace();
         }
         g.drawImage(loadedItem, 420, 200, null);
+
+
     };
 
 
